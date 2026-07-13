@@ -14,7 +14,6 @@ var data = {
     "music/Justyna Steczkowska - GAJA.mp3",
     "music/Sona Umroyan - Tsaghikneri Ashxarhum.mp3",
     "music/Tamara Zivkovic - Nova Zora.mp3"
-    
    ],
 
    poster: [
@@ -25,4 +24,37 @@ var data = {
     "cover/cover-5.webp",
     "cover/cover-6.jpg"
    ]
+}
+
+let song = new Audio()
+let currentSong = 0
+
+window.onload = function(){
+    playSong(false) // false = не запускать play() сразу, браузер это заблокирует
+}
+
+function playSong(shouldPlay = true){
+    song.src = data.song[currentSong]
+    let songTitle = document.getElementById("songTitle")
+    songTitle.textContent = data.title[currentSong]
+    let img = document.getElementById("row1")
+    img.style.backgroundImage = "url(" + data.poster[currentSong] + ")" 
+    let main = document.getElementById("main") 
+    main.style.backgroundImage = "url(" + data.poster[currentSong] + ")" 
+    if (shouldPlay) {
+        song.play()
+    }
+}
+
+function playOrPauseSong(){
+    let play = document.getElementById("play") // укажи реальный id кнопки
+
+    if (song.paused) {
+            song.play()
+            play.src = "images/pause.png"
+
+    }else{
+        song.pause()
+        play.src = "images/play-button-arrowhead.png"
+    }
 }
