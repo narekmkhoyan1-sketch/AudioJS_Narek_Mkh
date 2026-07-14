@@ -152,4 +152,5 @@ document.getElementById("decrease").onclick = function () {
     if (song.volume > 0) {
         song.volume -= 0.1;
     }
-};
+};   
+//
