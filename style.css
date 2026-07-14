@@ -44,8 +44,12 @@ body {
 .row1 {
     height: 40%;
     width: 100%;
-    background-size: cover;
-    background-position-y: 35%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    background-color: black;
 }
 
 #songTitle {
@@ -61,6 +65,11 @@ body {
     height: 50%;
     width: 100%;
     background-color: rgba(3, 252, 152, 0.5);
+}
+
+#totalTime {
+    color: white;
+    margin-right: 20px;
 }
 
 .play {
@@ -121,13 +130,10 @@ body {
 }
 
 #currentTime {
-    width: 50%;
-    height: 100%;
-    margin-left: 35px;
-    margin-top: -25px;
-    color: rgb(255, 255, 255);
+    color: white;
+    margin-left: 20px;
+    margin-top: 0;
 }
-
 
 .mute {
     height: 40%;
@@ -170,6 +176,12 @@ body {
     background-size: cover;
     margin: 5px;
     
+}
+
+.time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 
