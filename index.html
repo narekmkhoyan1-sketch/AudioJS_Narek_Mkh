@@ -14,39 +14,47 @@
         </video>
     </div>
 
-    <div class="player">
-        <div class="row1" id="row1"></div>
-        <div id="songTitle">Title</div>
+    <div class="stage">
+        <!-- Lyrics panel -->
+        <div class="lyrics">
+            <div class="lyrics-header">Lyrics</div>
+            <div class="lyrics-scroll" id="lyricsScroll"></div>
+        </div>
 
-        <div class="row2">
-            <div class="play">
-                <img src="images/previous.png" id="pre" alt="" onclick="pre()">
-                <img src="images/play-button-arrowhead.png" id="play" alt="" onclick="playOrPauseSong()">
-                <img src="images/next.png" id="next" alt="" onclick="next ()">
-            </div>
+        <!-- Player -->
+        <div class="player">
+            <div class="row1" id="row1"><div class="cover-img"></div></div>
+            <div id="songTitle">Title</div>
 
-            <div class="seek-bar">
-                <div class="handle">
-                    <div id = "fill"></div>
+            <div class="row2">
+                <div class="play">
+                    <img src="images/previous.png" id="pre" alt="" onclick="pre()">
+                    <img src="images/play-button-arrowhead.png" id="play" alt="" onclick="playOrPauseSong()">
+                    <img src="images/next.png" id="next" alt="" onclick="next ()">
                 </div>
-            </div>
 
-            <div class="mute">
-                <div class="time">
-                    <div id="currentTime">00:00</div>
-                    <span>/</span>
-                    <div id="totalTime">00:00</div>
+                <div class="seek-bar">
+                    <div class="handle">
+                        <div id="fill"></div>
+                    </div>
                 </div>
-                <div class="muteButtons">
-                    <img src="images/volume-down.png" id="decrease" alt="Decrease volume">
-                    <img src="images/volume.png" id="mute" alt="mute" onclick="muted()">
-                    <img src="images/increase-volume.png" id="increase" alt="Increase volume">
+
+                <div class="mute">
+                    <div class="time">
+                        <div id="currentTime">00:00</div>
+                        <span>/</span>
+                        <div id="totalTime">00:00</div>
+                    </div>
+                    <div class="muteButtons">
+                        <img src="images/volume-down.png" id="decrease" alt="Decrease volume">
+                        <img src="images/volume.png" id="mute" alt="mute" onclick="muted()">
+                        <img src="images/increase-volume.png" id="increase" alt="Increase volume">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="audio.js"></script>
-    
 </body>
 </html>

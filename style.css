@@ -1,63 +1,245 @@
+/* ===== Benzin font ===== */
+@font-face {
+    font-family: 'Benzin';
+    src: url('fonts/Benzin-Regular.woff2') format('woff2'),
+         url('fonts/Benzin-Regular.woff') format('woff'),
+         url('fonts/Benzin-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Benzin';
+    src: url('fonts/Benzin-Medium.woff2') format('woff2'),
+         url('fonts/Benzin-Medium.woff') format('woff'),
+         url('fonts/Benzin-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Benzin';
+    src: url('fonts/Benzin-Semibold.woff2') format('woff2'),
+         url('fonts/Benzin-Semibold.woff') format('woff'),
+         url('fonts/Benzin-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Benzin';
+    src: url('fonts/Benzin-Bold.woff2') format('woff2'),
+         url('fonts/Benzin-Bold.woff') format('woff'),
+         url('fonts/Benzin-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Benzin';
+    src: url('fonts/Benzin-ExtraBold.woff2') format('woff2'),
+         url('fonts/Benzin-ExtraBold.woff') format('woff'),
+         url('fonts/Benzin-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNow';
+    src: url('fonts/helvetica_light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HelveticaNow';
+    src: url('fonts/helvetica_regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'HelveticaNow';
+    src: url('fonts/helvetica_bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    font-family: 'Benzin', sans-serif;
+    overflow: hidden;
 }
 
-
 .main {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
+    background: #000;
 }
 
 .main video {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
     object-fit: cover;
-    filter: blur(8px);
-    object-position: 50% 50%;
+    object-position: center center;
+}
+
+.stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: stretch;
+    gap: 22px;
 }
 
 
+.lyrics {
+    width: 340px;
+    height: 350px;
+    border-radius: 25px;
+    background: rgba(15, 20, 30, 0.35);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 4px 10px 30px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    position: relative;
+}
+
+.lyrics-header {
+    padding: 16px 20px 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+}
+
+.lyrics-scroll {
+    position: absolute;
+    top: 46px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    padding: 10px 22px 40px;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%);
+}
+
+.lyrics-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.lyric-line {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 14px 0;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.lyric-line:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.lyric-line.active {
+    color: #ffffff;
+    transform: scale(1.06);
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+}
+
+.lyric-empty {
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    font-size: 15px;
+    margin-top: 120px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 .player {
     background-color: rgba(3, 207, 252, 0.5);
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    position: relative;
     height: 350px;
     width: 300px;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 4px 10px 10px;
+    box-shadow: 4px 10px 30px rgba(0, 0, 0, 0.45);
+    font-family: 'HelveticaNow', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .row1 {
     height: 40%;
     width: 100%;
+    position: relative;
+    background-color: black;
+    overflow: hidden;
+}
 
+.row1::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(22px) brightness(0.6) saturate(1.3);
+    transform: scale(1.15);
+    z-index: 0;
+}
+
+.row1 .cover-img {
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
-    background-color: black;
+    z-index: 1;
 }
 
 #songTitle {
     width: 100%;
     height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;
+    padding: 0 10px;
+    font-family: 'HelveticaNow', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
     color: whitesmoke;
 }
 
@@ -85,7 +267,7 @@ body {
     width: 25px;
     background-size: cover;
     margin-top: 20px;
-
+    cursor: pointer;
 }
 
 #play {
@@ -93,6 +275,7 @@ body {
     width: 35px;
     background-size: cover;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 #next {
@@ -100,7 +283,7 @@ body {
     width: 25px;
     background-size: cover;
     margin-top: 20px;
-
+    cursor: pointer;
 }
 
 .seek-bar {
@@ -116,6 +299,7 @@ body {
     height: 5px;
     background: linear-gradient(to right, #9d00ff 0%, #ff0000 100%);
     border-radius: 25px;
+    cursor: pointer;
 }
 
 #fill {
@@ -126,7 +310,6 @@ body {
     z-index: 999;
     margin-top: -1.5px;
     margin-left: -1.5px;
-
 }
 
 #currentTime {
@@ -150,7 +333,6 @@ body {
     align-items: center;
     justify-content: flex-end;
     margin-right: 10px;
-
 }
 
 #decrease {
@@ -158,7 +340,7 @@ body {
     width: 15px;
     background-size: cover;
     margin: 5px;
-
+    cursor: pointer;
 }
 
 #mute {
@@ -166,23 +348,32 @@ body {
     width: 15px;
     background-size: cover;
     margin: 5px;
-    
+    cursor: pointer;
 }
-
 
 #increase {
     height: 15px;
     width: 15px;
     background-size: cover;
     margin: 5px;
-    
+    cursor: pointer;
 }
 
 .time {
     display: flex;
     align-items: center;
     gap: 4px;
+    color: white;
 }
 
-
-
+/* Responsive: stack on narrow screens */
+@media (max-width: 720px) {
+    .stage {
+        flex-direction: column;
+        align-items: center;
+    }
+    .lyrics {
+        width: 300px;
+        height: 220px;
+    }
+}
